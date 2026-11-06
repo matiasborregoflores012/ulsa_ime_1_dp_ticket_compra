@@ -271,89 +271,95 @@ Sí, el ticket siguió alineado porque utilicé std::setw para mantener un ancho
 ## 14. Generalización (Fase 4)
 
 **¿Qué cálculo hacen `calcularDescuento` y `calcularIVA`? ¿Qué cambia entre una y otra?**
-_____
+Ambas funciones calculan un porcentaje de una cantidad. La diferencia es que calcularDescuento calcula el porcentaje que se resta al subtotal, mientras que calcularIVA calcula el porcentaje de impuesto que se agrega al total.
 
 **Receta de `calcularPorcentaje`** (también va en `RECETA.md`):
 
 ```text
-_____
+MODULO calcularPorcentaje(cantidad, porcentaje)
+
+    resultado <- cantidad * porcentaje / 100
+
+    devolver resultado
+
+FIN MODULO
 ```
 
 **¿Cómo quedaron el descuento y el IVA después del cambio?**
-_____
+Ambos quedaron utilizando la misma lógica de cálculo de porcentaje. Solo cambia el porcentaje aplicado y el valor sobre el que se realiza el cálculo.
 
 **¿Volví a correr toda la tabla de pruebas después del cambio? ¿Todo siguió pasando?**
-_____
+Sí. Volví a ejecutar todos los casos de prueba y los resultados siguieron siendo correctos.
 
-**¿Agregué `calcularPorcentaje` a mi tabla de módulos (sección 7)?** Sí / No
+**¿Agregué `calcularPorcentaje` a mi tabla de módulos (sección 7)?** Sí 
 
 **¿En qué otro programa podría reutilizar `calcularPorcentaje`?**
-_____
+En una calculadora de propinas, un sistema de comisiones, un programa de intereses bancarios, un sistema de calificaciones o cualquier aplicación que necesite calcular porcentajes
 
 ## 15. Revisión de calidad (Fase 4)
 
 | Principio | Pregunta | ¿Lo cumple? | Evidencia |
 |---|---|---|---|
-| Correcto | ¿Pasa todas las pruebas de la tabla? | _____ | _____ |
-| Robusto | ¿Resiste datos inválidos sin fallar ni terminar? | _____ | _____ |
-| Legible | ¿Otra persona entiende tu código sin que se lo expliques? | _____ | _____ |
-| Modular | ¿Cada función hace una sola cosa? | _____ | _____ |
-| Sin números mágicos | ¿Los valores fijos tienen nombre? | _____ | _____ |
-| Fácil de mantener | Si cambia el IVA o quien atiende, ¿cuántas líneas cambias? | _____ | _____ |
-| Reutilizable | ¿Alguna de tus funciones serviría en otro programa? | _____ | _____ |
+| Correcto | ¿Pasa todas las pruebas de la tabla? | Sí | Pasó todos los casos de la tabla de pruebas. |
+| Robusto | ¿Resiste datos inválidos sin fallar ni terminar? | Sí | Valida precio, cantidad y descuento inválidos antes de continuar. |
+| Legible | ¿Otra persona entiende tu código sin que se lo expliques? | Sí | Utiliza nombres descriptivos y el ticket está alineado con setw. |
+| Modular | ¿Cada función hace una sola cosa? | Sí | Cada función realiza una tarea específica (calcularSubtotal, calcularDescuento, calcularIVA, etc.). |
+| Sin números mágicos | ¿Los valores fijos tienen nombre? | Sí | Se usaron constantes para valores como el ancho del ticket y el porcentaje de IVA.|
+| Fácil de mantener | Si cambia el IVA o quien atiende, ¿cuántas líneas cambias? | Sí Si cambia el IVA o el ancho del ticket, solo se modifica una constante.| |
+| Reutilizable | ¿Alguna de tus funciones serviría en otro programa? | Sí | Funciones como calcularPorcentaje, calcularDescuento y calcularIVA pueden utilizarse en otros programas. |
 
 ## 16. Reto obligatorio (Fase 4)
 
-**¿Qué reto elegí?** (número y nombre; el 4 no cuenta como obligatorio) _____
+**¿Qué reto elegí?** (número y nombre; el 4 no cuenta como obligatorio) Validar las entradas del usuario.
 
 **¿Por qué lo elegí?**
-_____
+Porque evita que el programa trabaje con datos incorrectos, como precios negativos, cantidades negativas o descuentos inválidos.
 
 **¿Cómo lo resolví? ¿Qué módulos agregué o cambié?**
-_____
+Agregué validaciones utilizando ciclos while e instrucciones if para verificar que el precio y la cantidad fueran mayores que cero y que el descuento estuviera dentro del rango permitido antes de continuar con los cálculos.
 
 **¿Hice algún otro reto opcional? ¿Cuál?**
-_____
+Sí. Mejoré el formato del ticket utilizando std::setw para alinear los datos y hacer más legible la salida.
 
 ## 17. Bitácora de mejoras (Fase 4)
 
 | # | ¿Qué falló o qué quise mejorar? | ¿Qué cambié? | ¿Funcionó? |
 |---|---|---|---|
-| 1 | _____ | _____ | _____ |
-| 2 | _____ | _____ | _____ |
+| 1 | El total con descuento salía incorrecto porque sobrescribía la variable porcentaje. | Creé una variable separada para guardar el monto del descuento y conservé el porcentaje original. | si |
+| 2 | El programa aceptaba precios, cantidades y descuentos inválidos. | Agregué validaciones con while e if para volver a pedir los datos cuando fueran incorrectos. | Sí |
 
 ## 18. Dudas para el profesor (Fase 3)
 
 | Duda | Lo que ya intenté |
 |---|---|
-| _____ | _____ |
+| no | _____ |
 
 ## 19. Reflexión final
 
 **¿Qué aprendí con esta práctica?**
-_____
+a usar mejor los whiles y encontrar errores
 
 **Ahora que terminé, ¿qué cambiaría de mi proceso?**
-_____
+nada
 
 **¿Qué fue lo más difícil y cómo lo resolví?**
-_____
+corregir el error de descuento
 
 **¿Qué pregunta me quedó sin responder?**
-_____
+ninguna
 
 **Comparado con las prácticas anteriores, donde todo estaba en `main()`, ¿dividir el programa en módulos me facilitó o me complicó el trabajo? ¿Por qué?**
-_____
+fscilito
 
 **¿Cómo encontré el error de `calcularDescuento`? ¿Lo habría encontrado si solo hubiera probado sin descuento?**
-_____
+usando descuento y no no lo hubiera encontradp
 
 ## 20. Commits (Fase 5)
 
-**¿Cuántos commits hice durante la práctica?** _____
+**¿Cuántos commits hice durante la práctica?** 5
 
 **Si hice menos de 3, ¿por qué?**
-_____
+no
 
 ## 21. Lista de verificación antes de entregar (Fase 5)
 
