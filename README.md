@@ -191,6 +191,8 @@ _____
 |9. Calcular IVA|ivasolo|
 |10. Calcular total a pagar|suma del total con descuento e IVA|
 |11. Imprimir ticket|cout|
+
+
 **¿Hubo algún paso de mi receta que me costó traducir a C++? ¿Cuál y por qué?**
 hacer que calcule el descuento y el iva
 
