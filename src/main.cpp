@@ -25,6 +25,8 @@ double calculototal;
 double vasolo;
 double ivatotal;
 double descuento;
+const int ANCHO_TICKET = 36;
+string matias;
 
 inline double ivasolo(double calculototal){
     return calculototal* .16; 
@@ -44,18 +46,19 @@ int main() {
       
 
     // Paso 2: pedir y validar los datos
-    // TODO: ¿qué función de utilerias.h usas para cada dato?
+        std:: cout << "le atendio " << matias << endl;
+// TODO: ¿qué función de utilerias.h usas para cada dato?
     nombre = leerCadena("nombre: ");
    
  while(true) {precio = leerDecimal("precio$: ");
-    if(precio > 0) { break; } std:: cout << "error"<<endl;
+    if(precio >= 0) { break; } std:: cout << "error"<<endl;
      }
         
      while(true) {cantidad = leerEntero("cantidad: ");
-    if(cantidad > 0) { break; } std:: cout << "error"<<endl;
+    if(cantidad >= 0) { break; } std:: cout << "error"<<endl;
      }
     while(true) {porcentaje = leerDecimal("descuento%: ");
-    if(porcentaje > 0) { break; } std:: cout << "error"<<endl;
+    if(porcentaje >= 0) { break; } std:: cout << "error"<<endl;
      }
     
     //       ¿Cómo vuelves a pedir un dato que está fuera de rango?
@@ -67,7 +70,7 @@ calculototal = calcularTotal(subtotal, porcentaje);
 vasolo = ivasolo(calculototal);
 
 ivatotal = vasolo + calculototal;
-
+std::setw(ANCHO_TICKET);
 std:: cout << "=========================================" << endl;
 std:: cout << "                    ticket               " << endl;
 std:: cout << "=========================================" << endl;
