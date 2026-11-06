@@ -229,44 +229,44 @@ No. La variable de main() no cambió porque la función recibe una copia del val
 **¿Dónde definí la constante con mi nombre?** (marca una)
 - [ ] Constante local dentro de `imprimirTicket`
 - [ ] Constante a nivel de la librería, en `ticket.h`
-- [ ] Función que siempre devuelve la misma cadena
+- [m ] Función que siempre devuelve la misma cadena
 
 **¿Por qué elegí esa opción?**
-_____
+es facil de usar
 
 **¿Qué otras partes del programa podrían necesitar el nombre de quien atiende? (un mensaje de bienvenida, un ticket de devolución...)**
-_____
+en un mensaje de bienvenida
 
 **Si mañana atiende otra persona, ¿en cuántos lugares tengo que cambiar el nombre?**
-_____
+en un solo lugar donde defini la constante
 
 **Si el nombre se leyera del teclado o de un archivo, ¿cuánto código tendría que cambiar con mi opción?**
-_____
+unicamente la parte de donde se obtiene el nombre
 
 ## 13. Tabla de pruebas (Fase 4)
 <!-- Los datos de entrada de cada caso están en PRACTICA.md, Fase 4. -->
 
 | # | Caso | Esperado (subtotal / descuento / IVA / total) | Obtenido | ¿Pasó? |
 |---|---|---|---|---|
-| 1 | Sin descuento | 100.00 / 0.00 / 16.00 / 116.00 | _____ | _____ |
-| 2 | Con descuento | 100.00 / 10.00 / 14.40 / 104.40 | _____ | _____ |
-| 3 | Descuento de 15 % | 600.00 / 90.00 / 81.60 / 591.60 | _____ | _____ |
-| 4 | Precio con centavos | 19.99 / 0.00 / 3.20 / 23.19 | _____ | _____ |
-| 5 | Descuento total | 90.00 / 90.00 / 0.00 / 0.00 | _____ | _____ |
-| 6 | Precio inválido | vuelve a pedir el precio dos veces; 40.00 / 0.00 / 6.40 / 46.40 | _____ | _____ |
-| 7 | Cantidad inválida | vuelve a pedir la cantidad dos veces; 20.00 / 0.00 / 3.20 / 23.20 | _____ | _____ |
-| 8 | Descuento inválido | vuelve a pedir el descuento dos veces; 100.00 / 20.00 / 12.80 / 92.80 | _____ | _____ |
-| 9 | Texto en el precio | vuelve a pedir el precio una vez; 100.00 / 0.00 / 16.00 / 116.00 | _____ | _____ |
-| 10 | Nombre con espacios | muestra el nombre completo; 25.50 / 0.00 / 4.08 / 29.58 | _____ | _____ |
-| 11 | Nombre vacío | vuelve a pedir el nombre una vez; 12.00 / 0.00 / 1.92 / 13.92 | _____ | _____ |
-| 12 | Caso propio 1: _____ | _____ | _____ | _____ |
-| 13 | Caso propio 2: _____ | _____ | _____ | _____ |
+| 1 | Sin descuento | 100.00 / 0.00 / 16.00 / 116.00 | 100.00 / 0.00 / 16.00 / 116.00 | si |
+| 2 | Con descuento | 100.00 / 10.00 / 14.40 / 104.40 | 100.00 / 10.00 / 14.40 / 104.40 | si |
+| 3 | Descuento de 15 % | 600.00 / 90.00 / 81.60 / 591.60 | 600.00 / 90.00 / 81.60 / 591.60 | si |
+| 4 | Precio con centavos | 19.99 / 0.00 / 3.20 / 23.19 | 19.99 / 0.00 / 3.20 / 23.19 | si |
+| 5 | Descuento total | 90.00 / 90.00 / 0.00 / 0.00 | 90.00 / 90.00 / 0.00 / 0.00 | si |
+| 6 | Precio inválido | vuelve a pedir el precio dos veces; 40.00 / 0.00 / 6.40 / 46.40 | 40.00 / 0.00 / 6.40 / 46.40  | si |
+| 7 | Cantidad inválida | vuelve a pedir la cantidad dos veces; 20.00 / 0.00 / 3.20 / 23.20 | 20.00 / 0.00 / 3.20 / 23.20 | si |
+| 8 | Descuento inválido | vuelve a pedir el descuento dos veces; 100.00 / 20.00 / 12.80 / 92.80 | 100.00 / 20.00 / 12.80 / 92.80 | si |
+| 9 | Texto en el precio | vuelve a pedir el precio una vez; 100.00 / 0.00 / 16.00 / 116.00 | marca error y vuelve a pedir | si |
+| 10 | Nombre con espacios | muestra el nombre completo; 25.50 / 0.00 / 4.08 / 29.58 |chcharrones salsa negra | si |
+| 11 | Nombre vacío | vuelve a pedir el nombre una vez; 12.00 / 0.00 / 1.92 / 13.92 | solo se pasa al siguiente | no |
+| 12 | Caso propio 1: compra grande | 1400.00 / 350.00 / 168.00 / 1218.00  |  1400.00 / 350.00 / 168.00 / 1218.00 | si |
+| 13 | Caso propio 2: producto con decimales | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | si |
 
 **En el caso 4 el IVA real es 3.1984. ¿Por qué mi ticket muestra 3.20?**
-_____
+Porque el valor fue redondeado a dos decimales al mostrarse en pantalla.
 
 **En el caso 10, ¿el ticket siguió alineado? Si no, ¿qué corregí?**
-_____
+Sí, el ticket siguió alineado porque utilicé std::setw para mantener un ancho fijo al imprimir los datos.
 
 ## 14. Generalización (Fase 4)
 
