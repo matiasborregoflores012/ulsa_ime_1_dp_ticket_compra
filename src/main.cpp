@@ -11,6 +11,7 @@
 // ¿Recuerdas qué hace iostream?
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 #include "utilerias.h"
 #include "ticket.h"
@@ -70,17 +71,23 @@ ivatotal = vasolo + calculototal;
 std:: cout << "=========================================" << endl;
 std:: cout << "                    ticket               " << endl;
 std:: cout << "=========================================" << endl;
-std:: cout << "producto: " << nombre << endl; 
+std::cout << std::setw(15) << "nombre:";
+std:: cout  << nombre << endl; 
 std:: cout << "=========================================" << endl;
-std:: cout << "subtotal: " << subtotal << endl;
+std::cout << std::setw(15) << "subtotal:";
+std:: cout << subtotal << endl;
 std:: cout << "=========================================" << endl;
-std:: cout << "descuento: "  << descuento << endl;
+std::cout << std::setw(15) << "descuento:";
+std:: cout  << descuento << endl;
 std:: cout << "=========================================" << endl;
-std:: cout << "descuento total: " << calculototal << endl;
+std::cout << std::setw(15) << "calculo total:";
+std:: cout  << calculototal << endl;
 std:: cout << "=========================================" << endl;
-std:: cout <<"iva: " << vasolo << endl; 
+std::cout << std::setw(15) << "iva:";
+std:: cout  << vasolo << endl; 
 std:: cout << "=========================================" << endl;
-std:: cout <<"lo que te toca pagar prro xd: " << ivatotal << endl;
+std::cout << std::setw(15) << "total:";
+std:: cout << ivatotal << endl;
 std:: cout << "=========================================" << endl;
 std:: cout << "=========================================" << endl; 
     // TODO

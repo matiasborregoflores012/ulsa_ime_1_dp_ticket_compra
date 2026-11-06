@@ -154,7 +154,22 @@ Ejecutar en Windows:
 **¿En qué sistema operativo trabajé?** _____
 
 ## 9. Ejemplo de ejecución (Fase 3)
-<!-- Pega aquí lo que muestra tu programa en pantalla con el caso 2 de la tabla de pruebas (Cuaderno, 50, 2, 10). -->
+=========================================
+                    ticket               
+=========================================
+producto: cuaderno
+=========================================
+subtotal: 100
+=========================================
+descuento: 10
+=========================================
+descuento total: 90
+=========================================
+iva: 14.4
+=========================================
+lo que te toca pagar prro xd: 104.4
+=========================================
+=========================================<!-- Pega aquí lo que muestra tu programa en pantalla con el caso 2 de la tabla de pruebas (Cuaderno, 50, 2, 10). -->
 
 ```
 _____
@@ -166,13 +181,18 @@ _____
 | Paso de la receta | Módulo o instrucción de C++ que lo implementa |
 |---|---|
 | 1. Mensaje de bienvenida | _____ |
-| _____ | _____ |
-| _____ | _____ |
-| _____ | _____ |
-| _____ | _____ |
-
+| 2. Pedir nombre del producto | _____ |
+| 3. Pedir precio y validar | _____ |
+| 4. Pedir cantidad y validar | _____ |
+| 5. Pedir descuento y validar | _____ |
+|6. Calcular subtotal|calcularSubtotal
+|7. Calcular descuento|calcularDescuento
+|8. Calcular total con descuento|calcularTotal
+|9. Calcular IVA|ivasolo
+|10. Calcular total a pagar|suma del total con descuento e IVA
+|11. Imprimir ticket|cout
 **¿Hubo algún paso de mi receta que me costó traducir a C++? ¿Cuál y por qué?**
-_____
+hacer que calcule el descuento y el iva
 
 **Formato del ticket: ¿qué ancho usé en `std::setw` y por qué? ¿Qué pasa si uso un número menor que el largo de la etiqueta más larga?**
 _____
