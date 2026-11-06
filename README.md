@@ -180,17 +180,17 @@ _____
 
 | Paso de la receta | Módulo o instrucción de C++ que lo implementa |
 |---|---|
-| 1. Mensaje de bienvenida | _____ |
-| 2. Pedir nombre del producto | _____ |
-| 3. Pedir precio y validar | _____ |
-| 4. Pedir cantidad y validar | _____ |
-| 5. Pedir descuento y validar | _____ |
-|6. Calcular subtotal|calcularSubtotal
-|7. Calcular descuento|calcularDescuento
-|8. Calcular total con descuento|calcularTotal
-|9. Calcular IVA|ivasolo
-|10. Calcular total a pagar|suma del total con descuento e IVA
-|11. Imprimir ticket|cout
+| 1. Mensaje de bienvenida | std::cout |
+| 2. Pedir nombre del producto | leerCadena |
+| 3. Pedir precio y validar | leerDecimal + while + if |
+| 4. Pedir cantidad y validar | leerEntero + while + if |
+| 5. Pedir descuento y validar | leerDecimal + while + if |
+|6. Calcular subtotal|calcularSubtotal|
+|7. Calcular descuento|calcularDescuento|
+|8. Calcular total con descuento|calcularTotal|
+|9. Calcular IVA|ivasolo|
+|10. Calcular total a pagar|suma del total con descuento e IVA|
+|11. Imprimir ticket|cout|
 **¿Hubo algún paso de mi receta que me costó traducir a C++? ¿Cuál y por qué?**
 hacer que calcule el descuento y el iva
 
