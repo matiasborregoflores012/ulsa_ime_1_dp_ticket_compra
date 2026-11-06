@@ -4,27 +4,51 @@
 > Si una pregunta no aplica (por ejemplo, no hiciste el Experimento C o no tuviste dudas), escribe `No aplica`. Si te sobran filas en una tabla, bórralas.
 
 ## 1. Descripción del problema (Fase 1)
-<!-- Explica con tus palabras qué hace tu programa y para qué serviría en la vida real. Máximo 4 líneas. -->
+Este programa permite capturar el nombre de un producto, su precio unitario, la cantidad comprada y el porcentaje de descuento que se aplicará. Con estos datos, calcula el subtotal multiplicando el precio por la cantidad. Después obtiene el monto del descuento y lo resta al subtotal para conocer el importe con descuento. Posteriormente calcula el IVA del 16 % y lo suma al resultado anterior para obtener el total a pagar. Finalmente, muestra toda la información organizada en forma de ticket de compra.
+
+En la vida real, este programa podría utilizarse en pequeños negocios, tiendas o supermercados para calcular automáticamente el importe de las ventas. Además, ayuda a evitar errores en los cálculos y facilita la generación de comprobantes para los clientes.<!-- Explica con tus palabras qué hace tu programa y para qué serviría en la vida real. Máximo 4 líneas. -->
 
 _____
 
 ## 2. Entradas y salidas (Fase 1)
+Entrada: Precio
+
+Tipo: double
+Se lee con leerDecimal()
+Guarda el precio del producto.
+
+Entrada: Cantidad
+
+Tipo: int
+Se lee con leerEntero()
+Guarda la cantidad de productos comprados.
+
+Salida: Total
+
+Tipo: double
+Muestra la cantidad final a pagar después del descuento y el IVA.
 <!-- Define cada entrada y cada salida, con su tipo de dato y la función de utilerias.h con la que la vas a leer. -->
 
 **Entradas:**
 
 | Entrada | Tipo de dato | Función de `utilerias.h` |
 |---|---|---|
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
-| _____ | _____ | _____ |
+| nombreProducto | string | leerCadena |
+| precio | double | leerDecimal |
+| cantidad | int | leerEntero |
+| porcentajeDescuento | double | leerDecimal |
 
 **Salida** (¿qué datos muestra el ticket?):
-_____
+Nombre del producto
+Precio unitario
+Cantidad comprada
+Subtotal
+Descuento aplicado
+IVA (16 %)
+Total a pagar
 
 **¿El IVA se calcula sobre el subtotal o sobre lo que queda después del descuento? ¿Por qué?**
-_____
+El IVA se calcula sobre lo que queda después del descuento, porque esa es la cantidad que realmente va a pagar el cliente por el producto.
 
 ## 3. Restricciones e invariante (Fases 1 y 2)
 
@@ -32,40 +56,40 @@ _____
 
 | Dato | ¿Qué valores son válidos? | ¿Por qué? |
 |---|---|---|
-| Nombre del producto | _____ | _____ |
-| Precio | _____ | _____ |
-| Cantidad | _____ | _____ |
-| Descuento (%) | _____ | _____ |
+| Nombre del producto | Texto no vacío | Para identificar el producto correctamente. |
+| Precio | Mayor que 0 | Un producto no puede tener precio negativo o cero. |
+| Cantidad | Entero mayor que 0 | Debe comprarse al menos una unidad. |
+| Descuento (%) | Entre 0 y 100 | Un descuento no puede ser negativo ni mayor al 100 %. |
 
 **¿Qué hace mi programa si el usuario escribe un dato fuera de rango?**
-_____
+Si el usuario escribe un dato fuera de rango, el programa seguirá ejecutándose y realizará los cálculos con ese valor, lo que puede generar resultados incorrectos en el ticket.
 
 **¿Puede el total salir negativo? ¿Por qué?**
-_____
+No, el total no puede salir negativo si se cumplen las restricciones del programa. Como el precio y la cantidad son mayores que 0 y el descuento está entre 0 % y 100 %, el subtotal con descuento nunca será menor que cero. Además, el IVA siempre suma una cantidad positiva o cero, por lo que el total final será mayor o igual a cero.
 
 **Invariante 1** (después del ciclo que valida el precio, ¿qué es siempre cierto sobre `precio`?):
-_____
+Después de terminar el ciclo de validación, la variable precio siempre contiene un valor mayor que 0.
 
 **Invariante 2** (¿qué relación se cumple siempre entre el subtotal, el descuento, el IVA y el total?):
-_____
+El total siempre se obtiene sumando el IVA al subtotal después de aplicar el descuento.
 
 ## 4. Casos resueltos a mano (Fase 1)
 
 | Caso | Nombre | Precio | Cantidad | Descuento (%) | Subtotal | Descuento ($) | IVA | Total |
 |---|---|---|---|---|---|---|---|---|
-| 1 (sin descuento) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
-| 2 (con descuento) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
-| 3 (precio con centavos) | _____ | _____ | _____ | _____ | _____ | _____ | _____ | _____ |
+| 1 (sin descuento) | Cuaderno | 50.00 | 2 | 0 | 100.00 | 0.00 | 16.00 | 116.00 |
+| 2 (con descuento) | Mochila | 500.00 | 1 | 10 | 500.00 | 50.00 | 72.00 | 522.00 |
+| 3 (precio con centavos) | Pluma | 4 | 20 | 50.00 | 10.00 | 6.40 | 6.40 | 46.40 |
 
 ## 5. Tipo de dato abstracto (Fase 1)
 
 | TDA | Datos (¿qué tiene?) | Operaciones (¿qué se puede hacer con él?) |
 |---|---|---|
-| Producto | nombre (texto), _____, _____ | calcular su subtotal |
-| _____ | _____ | _____ |
+| Producto | nombre (texto), precio, cantidad | calcular su subtotal |
+| Ticket | subtotal, descuento, IVA, total | calcular y mostrar el total de la compra |
 
 **Jerarquías:** una tienda vende productos por pieza (un cuaderno) y productos por peso (un kilo de tortillas). ¿Los dos son productos? ¿Qué datos tienen en común y cuál cambia?
-_____
+Sí, ambos son productos porque se venden y tienen nombre y precio. Lo que cambia es la forma de medirlos: uno se vende por cantidad de piezas y el otro por peso.
 
 ## 6. Análisis descendente (Fase 2)
 <!-- Completa el árbol. Marca con (ya existe) las partes que ya resuelve una función de utilerias.h o de ticket.h. -->
@@ -75,22 +99,22 @@ Generar ticket de compra
 ├── 1. Mostrar bienvenida
 ├── 2. Pedir los datos
 │     ├── 2.1 Pedir el nombre del producto
-│     ├── 2.2 Pedir el precio (y validar que _____)
-│     ├── 2.3 _____
-│     └── 2.4 _____
+│     ├── 2.2 Pedir el precio (y validar que sea mayor que 0)
+│     ├── 2.3 Pedir la cantidad (y validar que sea mayor que 0)
+│     └── 2.4 Pedir el porcentaje de descuento (y validar que esté entre 0 y 100)
 ├── 3. Calcular los importes
 │     ├── 3.1 Calcular el subtotal
-│     ├── 3.2 _____
-│     ├── 3.3 _____
-│     └── 3.4 _____
-└── 4. _____
+│     ├── 3.2 Calcular el descuento
+│     ├── 3.3 Calcular el IVA
+│     └── 3.4 Calcular el total
+└── 4.  Mostrar el ticket de compra
 ```
 
 **Análisis ascendente: ¿qué partes del árbol ya estaban resueltas por una función que existe? ¿Cuáles?**
-_____
+Ya estaban resueltas las tareas de capturar datos mediante las funciones leerCadena(), leerDecimal() y leerEntero(). Los cálculos y la generación del ticket deben implementarse dentro del programa.
 
 **¿Alguna parte del árbol hacía más de una cosa? ¿Cómo la dividiste?**
-_____
+Sí. La parte "Calcular los importes" hacía más de una cosa, porque incluía varios cálculos diferentes. Por eso se dividió en:
 
 ## 7. Módulos y receta (Fase 2)
 
@@ -98,14 +122,14 @@ _____
 |---|---|---|---|
 | `calcularSubtotal` | precio, cantidad | el subtotal | Función |
 | `calcularDescuento` | subtotal, porcentaje | el monto del descuento | Función |
-| `calcularIVA` | _____ | _____ | _____ |
-| `imprimirTicket` | _____ | _____ | _____ |
-| _____ | _____ | _____ | _____ |
+| `calcularIVA` | subtotal con descuento | el IVA | Función |
+| `imprimirTicket` | nombre, subtotal, descuento, IVA, total | nada | Procedimiento |
+| calcularTotal | subtotal, descuento, IVA | el total | Función |
 
 <!-- Tu receta va en el archivo RECETA.md. Aquí solo responde las preguntas. -->
 
-**¿Probé mi receta a mano con mis 3 casos?** Sí / No
-**¿Tuve que corregirla? ¿Qué cambié?** _____
+**¿Probé mi receta a mano con mis 3 casos?** Sí 
+**¿Tuve que corregirla? ¿Qué cambié?** no
 
 ## 8. Cómo compilar y ejecutar (Fase 3)
 
