@@ -195,10 +195,10 @@ _____
 hacer que calcule el descuento y el iva
 
 **Formato del ticket: ¿qué ancho usé en `std::setw` y por qué? ¿Qué pasa si uso un número menor que el largo de la etiqueta más larga?**
-_____
+Usé un ancho de 15 caracteres para mantener alineadas las columnas del ticket
 
 **¿Convertí el ancho de las líneas del ticket (36) en una constante? ¿Cómo la llamé? Si no, ¿por qué?**
-_____
+Sí. Convertí el ancho del ticket en una constante llamada ANCHO_TICKET. Esto evita usar números mágicos y facilita modificar el formato del ticket en el futuro.
 
 ## 11. Experimentos y depuración (Fase 3)
 
@@ -206,23 +206,23 @@ _____
 
 | Paso de depuración | Lo que hice o encontré |
 |---|---|
-| 1. Reproduce: ¿con qué datos falló? | _____ |
-| 2. Aísla: ¿qué valor intermedio estaba mal? (salidas `[DEBUG]`) | _____ |
-| 3. Explica: ¿cuál era la causa? | _____ |
-| 4. Corrige: ¿qué cambiaste? | _____ |
-| 5. Limpia: ¿comentaste tus salidas `[DEBUG]`? | _____ |
+| 1. Reproduce: ¿con qué datos falló? | Precio = 200, cantidad = 2, descuento = 10%. El total después del descuento salía 240 en lugar de 360. |
+| 2. Aísla: ¿qué valor intermedio estaba mal? (salidas `[DEBUG]`) | Revisé las variables y observé que porcentaje cambiaba de 10 a 40. |
+| 3. Explica: ¿cuál era la causa? | Estaba guardando el monto del descuento dentro de la variable porcentaje, perdiendo el porcentaje original. |
+| 4. Corrige: ¿qué cambiaste? | Creé una variable separada para guardar el descuento y dejé porcentaje con su valor original. |
+| 5. Limpia: ¿comentaste tus salidas `[DEBUG]`? | Sí, eliminé los mensajes de depuración después de comprobar que el cálculo era correcto. |
 
 **La prueba con 0 % pasó aunque la función tenía un error. ¿Qué me enseña eso sobre elegir mis casos de prueba?**
-_____
+Que no basta con probar un solo caso. Debo usar varios casos de prueba, incluyendo descuentos de 0 %, 10 %, 20 % y 100 %, para detectar errores que podrían quedar ocultos con datos muy simples.
 
 **Experimento B: al cambiar el IVA a 8 %, ¿cuántas líneas tuve que cambiar? ¿Qué mejoraría?**
-_____
+Tuve que cambiar una línea donde estaba el valor del IVA. Mejoraría usando una constante para el IVA, por ejemplo IVA, para modificarlo en un solo lugar.
 
 **¿Mi ticket seguía diciendo `IVA (16%)`? ¿Qué hice al respecto?**
-_____
+Revisé que el texto del ticket coincidiera con el porcentaje utilizado en el cálculo para evitar información incorrecta.
 
 **Experimento C (opcional): al cambiar el parámetro dentro de `calcularIVA`, ¿cambió la variable de `main()`? ¿Por qué?**
-_____
+No. La variable de main() no cambió porque la función recibe una copia del valor (paso por valor). Los cambios dentro de la función solo afectan a esa copia.
 
 ## 12. La constante "Le atendio" (Fase 3)
 
