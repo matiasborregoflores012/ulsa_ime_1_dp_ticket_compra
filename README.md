@@ -260,7 +260,7 @@ unicamente la parte de donde se obtiene el nombre
 | 10 | Nombre con espacios | muestra el nombre completo; 25.50 / 0.00 / 4.08 / 29.58 |chcharrones salsa negra | si |
 | 11 | Nombre vacío | vuelve a pedir el nombre una vez; 12.00 / 0.00 / 1.92 / 13.92 | solo se pasa al siguiente | no |
 | 12 | Caso propio 1: compra grande | 1400.00 / 350.00 / 168.00 / 1218.00  |  1400.00 / 350.00 / 168.00 / 1218.00 | si |
-| 13 | Caso propio 2: producto con decimales | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | si |
+| 13 | Caso propio 2: producto con decimales | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 | 99.00 / 9.90 / 14.26 / 103.36 |  si |
 
 **En el caso 4 el IVA real es 3.1984. ¿Por qué mi ticket muestra 3.20?**
 Porque el valor fue redondeado a dos decimales al mostrarse en pantalla.
@@ -305,7 +305,7 @@ En una calculadora de propinas, un sistema de comisiones, un programa de interes
 | Legible | ¿Otra persona entiende tu código sin que se lo expliques? | Sí | Utiliza nombres descriptivos y el ticket está alineado con setw. |
 | Modular | ¿Cada función hace una sola cosa? | Sí | Cada función realiza una tarea específica (calcularSubtotal, calcularDescuento, calcularIVA, etc.). |
 | Sin números mágicos | ¿Los valores fijos tienen nombre? | Sí | Se usaron constantes para valores como el ancho del ticket y el porcentaje de IVA.|
-| Fácil de mantener | Si cambia el IVA o quien atiende, ¿cuántas líneas cambias? | Sí Si cambia el IVA o el ancho del ticket, solo se modifica una constante.| |
+| Fácil de mantener | Si cambia el IVA o quien atiende, ¿cuántas líneas cambias? | Sí | Si cambia el IVA o el ancho del ticket, solo se modifica una constante.| |
 | Reutilizable | ¿Alguna de tus funciones serviría en otro programa? | Sí | Funciones como calcularPorcentaje, calcularDescuento y calcularIVA pueden utilizarse en otros programas. |
 
 ## 16. Reto obligatorio (Fase 4)
